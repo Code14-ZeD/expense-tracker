@@ -9,9 +9,9 @@ export default function SummaryCards() {
     const { balance, income, expenses } = useTransactions();
 
     const formatCurrency = (amount: number) => {
-        return new Intl.NumberFormat("en-US", {
+        return new Intl.NumberFormat("in-IN", {
             style: "currency",
-            currency: "USD",
+            currency: "INR",
         }).format(amount);
     };
 

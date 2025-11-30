@@ -25,6 +25,10 @@ export default function TransactionForm() {
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("");
     const [type, setType] = useState<TransactionType>("expense");
+    const [date, setDate] = useState(() => {
+        const d = new Date();
+        return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    });
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -38,12 +42,16 @@ export default function TransactionForm() {
             description,
             category,
             type,
-            date: new Date().toISOString(),
+            date: new Date(date + "T00:00").toISOString(),
         });
 
         setAmount("");
         setDescription("");
         setCategory("");
+        setDate(() => {
+            const d = new Date();
+            return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+        });
         toast.success("Transaction added successfully");
     };
 
@@ -69,15 +77,26 @@ export default function TransactionForm() {
                         </TabsList>
 
                         <form onSubmit={handleSubmit} className="space-y-4">
-                            <div className="space-y-2">
-                                <Label htmlFor="amount">Amount</Label>
-                                <Input
-                                    id="amount"
-                                    type="number"
-                                    value={amount}
-                                    onChange={(e) => setAmount(e.target.value)}
-                                    placeholder="0.00"
-                                />
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="space-y-2">
+                                    <Label htmlFor="date">Date</Label>
+                                    <Input
+                                        id="date"
+                                        type="date"
+                                        value={date}
+                                        onChange={(e) => setDate(e.target.value)}
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="amount">Amount</Label>
+                                    <Input
+                                        id="amount"
+                                        type="number"
+                                        value={amount}
+                                        onChange={(e) => setAmount(e.target.value)}
+                                        placeholder="0.00"
+                                    />
+                                </div>
                             </div>
 
                             <div className="space-y-2">

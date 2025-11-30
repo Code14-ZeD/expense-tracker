@@ -20,7 +20,7 @@ export default function TransactionList() {
 
     return (
         <Card className="h-full">
-            <CardHeader>
+            <CardHeader className="flex flex-row items-center justify-between">
                 <CardTitle>Recent Transactions</CardTitle>
             </CardHeader>
             <CardContent className="p-0">
@@ -64,7 +64,7 @@ export default function TransactionList() {
                                             : "text-red-600 dark:text-red-500"
                                             }`}
                                     >
-                                        {transaction.type === "income" ? "+" : "-"}$
+                                        {transaction.type === "income" ? "+" : "-"}₹
                                         {transaction.amount.toFixed(2)}
                                     </span>
                                     <Button
