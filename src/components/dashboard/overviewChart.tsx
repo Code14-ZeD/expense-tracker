@@ -10,8 +10,10 @@ import {
     Tooltip,
 } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useTranslations } from "next-intl";
 
 export default function OverviewChart() {
+    const t = useTranslations('Dashboard');
     const { transactions } = useTransactions();
 
     const expenseData = transactions
@@ -46,7 +48,7 @@ export default function OverviewChart() {
     if (formattedData.length === 0) {
         return (
             <Card className="h-[400px] flex items-center justify-center">
-                <p className="text-muted-foreground">No expenses to show</p>
+                <p className="text-muted-foreground">{t('chart.noData')}</p>
             </Card>
         );
     }
@@ -54,7 +56,7 @@ export default function OverviewChart() {
     return (
         <Card className="h-[400px]">
             <CardHeader>
-                <CardTitle>Expense Breakdown</CardTitle>
+                <CardTitle>{t('chart.title')}</CardTitle>
             </CardHeader>
             <CardContent>
                 <div className="h-[300px] w-full">

@@ -1,0 +1,62 @@
+{
+    "Settings": {
+        "title": "Configuración",
+        "profile": "Configuración del perfil",
+        "manage": "Administra tu información personal",
+        "avatar": "Avatar",
+        "initials": "Generado a partir de las iniciales de su nombre",
+        "name": "Nombre",
+        "age": "Edad",
+        "gender": "Género",
+        "language": "Idioma",
+        "save": "Guardar perfil",
+        "edit": "Editar perfil",
+        "data": "Gestión de datos",
+        "download": "Descargar datos",
+        "upload": "Subir datos",
+        "exportDesc": "Esto exportará sus transacciones, configuraciones y datos de perfil a un archivo de texto. Cargar un archivo sobrescribirá sus datos actuales."
+    },
+    "Dashboard": {
+        "greeting": {
+            "morning": "Buenos días",
+            "afternoon": "Buenas tardes",
+            "evening": "Buenas noches"
+        },
+        "overview": "Resumen de sus actividades financieras",
+        "defaultUser": "Usuario",
+        "summary": {
+            "balance": "Saldo total",
+            "income": "Ingresos",
+            "expenses": "Gastos"
+        },
+        "recentTransactions": "Transacciones recientes",
+        "noTransactions": "No hay transacciones todavía.",
+        "addTransaction": {
+            "title": "Añadir transacción",
+            "income": "Ingresos",
+            "expense": "Gastos",
+            "date": "Fecha",
+            "amount": "Cantidad",
+            "description": "Descripción",
+            "category": "Categoría",
+            "selectCategory": "Seleccionar categoría",
+            "submit": "Añadir transacción",
+            "error": "Por favor complete todos los campos",
+            "success": "Transacción añadida con éxito"
+        },
+        "chart": {
+            "title": "Desglose de gastos",
+            "noData": "No hay gastos para mostrar"
+        },
+        "download": {
+            "button": "Descargar informe",
+            "title": "Descargar informe de gastos",
+            "description": "Seleccione un rango de fechas para filtrar el informe. Deje vacío para descargar todas las transacciones.",
+            "startDate": "Fecha de inicio",
+            "endDate": "Fecha de finalización",
+            "submit": "Descargar PDF",
+            "error": "No se encontraron transacciones para el rango de fechas seleccionado",
+            "success": "Informe descargado con éxito"
+        }
+    }
+}

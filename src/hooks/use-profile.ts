@@ -4,6 +4,7 @@ export interface Profile {
     name: string;
     age: string;
     gender: string;
+    language: string;
 }
 
 export function useProfile() {
@@ -11,6 +12,7 @@ export function useProfile() {
         name: '',
         age: '',
         gender: '',
+        language: 'en',
     });
     const [loading, setLoading] = useState(true);
 

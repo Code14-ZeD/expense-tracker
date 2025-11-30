@@ -11,8 +11,10 @@ import { useProfile } from "@/hooks/use-profile";
 import { Download, Upload, User } from "lucide-react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 export default function SettingsPage() {
+    const t = useTranslations('Settings');
     const { profile, updateProfile, loading } = useProfile();
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [isEditing, setIsEditing] = useState(false);
@@ -29,17 +31,24 @@ export default function SettingsPage() {
     }, [profile, loading]);
 
     const handleSave = () => {
-        if (!formData.name || !formData.age || !formData.gender) {
+        if (!formData.name || !formData.age || !formData.gender || !formData.language) {
             toast.error("Please fill all fields");
             return;
         }
         updateProfile(formData);
+
+        // Set cookie for next-intl
+        document.cookie = `NEXT_LOCALE=${formData.language}; path=/; max-age=31536000`;
+
         setIsEditing(false);
         toast.success("Profile saved");
 
         // If this was a new profile setup, we can offer to go to dashboard
         if (!profile.name) {
             router.push("/");
+        } else {
+            // Refresh to apply language change
+            router.refresh();
         }
     };
 
@@ -103,12 +112,12 @@ export default function SettingsPage() {
         <div className="min-h-screen bg-zinc-50 dark:bg-black">
             <Header />
             <main className="mx-auto max-w-4xl px-4 py-8 space-y-8">
-                <h1 className="text-3xl font-bold">Settings</h1>
+                <h1 className="text-3xl font-bold">{t('title')}</h1>
 
                 <Card>
                     <CardHeader>
-                        <CardTitle>Profile Settings</CardTitle>
-                        <CardDescription>Manage your personal information</CardDescription>
+                        <CardTitle>{t('profile')}</CardTitle>
+                        <CardDescription>{t('manage')}</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-6">
                         <div className="flex items-center gap-6">
@@ -116,16 +125,16 @@ export default function SettingsPage() {
                                 {formData.name ? getInitials(formData.name) : <User className="h-10 w-10" />}
                             </div>
                             <div className="space-y-1">
-                                <h3 className="font-medium">Avatar</h3>
+                                <h3 className="font-medium">{t('avatar')}</h3>
                                 <p className="text-sm text-muted-foreground">
-                                    Generated from your name initials
+                                    {t('initials')}
                                 </p>
                             </div>
                         </div>
 
                         <div className="grid gap-4 md:grid-cols-2">
                             <div className="space-y-2">
-                                <Label htmlFor="name">Name</Label>
+                                <Label htmlFor="name">{t('name')}</Label>
                                 <Input
                                     id="name"
                                     value={formData.name}
@@ -135,7 +144,7 @@ export default function SettingsPage() {
                                 />
                             </div>
                             <div className="space-y-2">
-                                <Label htmlFor="age">Age</Label>
+                                <Label htmlFor="age">{t('age')}</Label>
                                 <Input
                                     id="age"
                                     type="number"
@@ -146,7 +155,7 @@ export default function SettingsPage() {
                                 />
                             </div>
                             <div className="space-y-2">
-                                <Label htmlFor="gender">Gender</Label>
+                                <Label htmlFor="gender">{t('gender')}</Label>
                                 <Select
                                     value={formData.gender}
                                     onValueChange={(value) => setFormData({ ...formData, gender: value })}
@@ -162,14 +171,32 @@ export default function SettingsPage() {
                                     </SelectContent>
                                 </Select>
                             </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="language">{t('language')}</Label>
+                                <Select
+                                    value={formData.language || 'en'}
+                                    onValueChange={(value) => setFormData({ ...formData, language: value })}
+                                    disabled={!isEditing}
+                                >
+                                    <SelectTrigger>
+                                        <SelectValue placeholder="Select language" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="en">English</SelectItem>
+                                        <SelectItem value="es">Spanish</SelectItem>
+                                        <SelectItem value="fr">French</SelectItem>
+                                        <SelectItem value="hi">Hindi</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                            </div>
                         </div>
 
                         <div className="flex justify-end gap-2">
                             {isEditing ? (
-                                <Button onClick={handleSave}>Save Profile</Button>
+                                <Button onClick={handleSave}>{t('save')}</Button>
                             ) : (
                                 <Button variant="outline" onClick={() => setIsEditing(true)}>
-                                    Edit Profile
+                                    {t('edit')}
                                 </Button>
                             )}
                         </div>
@@ -178,14 +205,14 @@ export default function SettingsPage() {
 
                 <Card>
                     <CardHeader>
-                        <CardTitle>Data Management</CardTitle>
-                        <CardDescription>Download or upload your app data and configuration</CardDescription>
+                        <CardTitle>{t('data')}</CardTitle>
+                        <CardDescription>{t('manage')}</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
                         <div className="flex flex-col gap-4 sm:flex-row">
                             <Button onClick={handleDownload} className="flex-1 gap-2">
                                 <Download className="h-4 w-4" />
-                                Download Data
+                                {t('download')}
                             </Button>
                             <Button
                                 variant="outline"
@@ -193,7 +220,7 @@ export default function SettingsPage() {
                                 onClick={() => fileInputRef.current?.click()}
                             >
                                 <Upload className="h-4 w-4" />
-                                Upload Data
+                                {t('upload')}
                             </Button>
                             <input
                                 type="file"
@@ -204,8 +231,7 @@ export default function SettingsPage() {
                             />
                         </div>
                         <p className="text-sm text-muted-foreground">
-                            This will export your transactions, settings, and profile data to a text file.
-                            Uploading a file will overwrite your current data.
+                            {t('exportDesc')}
                         </p>
                     </CardContent>
                 </Card>

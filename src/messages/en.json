@@ -1,0 +1,62 @@
+{
+    "Settings": {
+        "title": "Settings",
+        "profile": "Profile Settings",
+        "manage": "Manage your personal information",
+        "avatar": "Avatar",
+        "initials": "Generated from your name initials",
+        "name": "Name",
+        "age": "Age",
+        "gender": "Gender",
+        "language": "Language",
+        "save": "Save Profile",
+        "edit": "Edit Profile",
+        "data": "Data Management",
+        "download": "Download Data",
+        "upload": "Upload Data",
+        "exportDesc": "This will export your transactions, settings, and profile data to a text file. Uploading a file will overwrite your current data."
+    },
+    "Dashboard": {
+        "greeting": {
+            "morning": "Good Morning",
+            "afternoon": "Good Afternoon",
+            "evening": "Good Evening"
+        },
+        "overview": "Overview of your financial activities",
+        "defaultUser": "User",
+        "summary": {
+            "balance": "Total Balance",
+            "income": "Income",
+            "expenses": "Expenses"
+        },
+        "recentTransactions": "Recent Transactions",
+        "noTransactions": "No transactions yet.",
+        "addTransaction": {
+            "title": "Add Transaction",
+            "income": "Income",
+            "expense": "Expense",
+            "date": "Date",
+            "amount": "Amount",
+            "description": "Description",
+            "category": "Category",
+            "selectCategory": "Select Category",
+            "submit": "Add Transaction",
+            "error": "Please fill in all fields",
+            "success": "Transaction added successfully"
+        },
+        "chart": {
+            "title": "Expense Breakdown",
+            "noData": "No expenses to show"
+        },
+        "download": {
+            "button": "Download Report",
+            "title": "Download Expense Report",
+            "description": "Select a date range to filter the report. Leave empty to download all transactions.",
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "submit": "Download PDF",
+            "error": "No transactions found for the selected date range",
+            "success": "Report downloaded successfully"
+        }
+    }
+}

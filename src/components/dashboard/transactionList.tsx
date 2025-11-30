@@ -6,14 +6,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Trash2Icon, TrendingDownIcon, TrendingUpIcon } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
 
 export default function TransactionList() {
+    const t = useTranslations('Dashboard');
     const { transactions, deleteTransaction } = useTransactions();
 
     if (transactions.length === 0) {
         return (
             <Card className="h-full flex flex-col items-center justify-center p-8 text-center text-muted-foreground">
-                <p>No transactions yet.</p>
+                <p>{t('noTransactions')}</p>
             </Card>
         );
     }
@@ -21,10 +23,10 @@ export default function TransactionList() {
     return (
         <Card className="h-full">
             <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle>Recent Transactions</CardTitle>
+                <CardTitle>{t('recentTransactions')}</CardTitle>
             </CardHeader>
             <CardContent className="p-0">
-                <div className="max-h-[400px] overflow-y-auto p-4 pt-0">
+                <div className="max-h-[400px] overflow-y-auto p-4 pt-0 scrollbar-thin">
                     <AnimatePresence initial={false}>
                         {transactions.map((transaction) => (
                             <motion.div

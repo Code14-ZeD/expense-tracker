@@ -116,6 +116,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -123,19 +124,31 @@
 
 @utility scrollbar-thin {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-border) transparent;
-  
+  scrollbar-color: transparent transparent;
+
   &::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
-  
+
   &::-webkit-scrollbar-track {
     background: transparent;
   }
-  
+
   &::-webkit-scrollbar-thumb {
-    background-color: var(--color-border);
+    background-color: transparent;
     border-radius: 9999px;
+  }
+
+  &:hover {
+    scrollbar-color: var(--color-border) transparent;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+  }
+
+  &:hover::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-muted-foreground);
   }
 }

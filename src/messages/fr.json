@@ -1,0 +1,62 @@
+{
+    "Settings": {
+        "title": "Paramètres",
+        "profile": "Paramètres du profil",
+        "manage": "Gérer vos informations personnelles",
+        "avatar": "Avatar",
+        "initials": "Généré à partir des initiales de votre nom",
+        "name": "Nom",
+        "age": "Âge",
+        "gender": "Genre",
+        "language": "Langue",
+        "save": "Enregistrer le profil",
+        "edit": "Modifier le profil",
+        "data": "Gestion des données",
+        "download": "Télécharger les données",
+        "upload": "Télécharger les données",
+        "exportDesc": "Cela exportera vos transactions, paramètres et données de profil vers un fichier texte. Le téléchargement d'un fichier écrasera vos données actuelles."
+    },
+    "Dashboard": {
+        "greeting": {
+            "morning": "Bonjour",
+            "afternoon": "Bon après-midi",
+            "evening": "Bonsoir"
+        },
+        "overview": "Aperçu de vos activités financières",
+        "defaultUser": "Utilisateur",
+        "summary": {
+            "balance": "Solde total",
+            "income": "Revenus",
+            "expenses": "Dépenses"
+        },
+        "recentTransactions": "Transactions récentes",
+        "noTransactions": "Pas encore de transactions.",
+        "addTransaction": {
+            "title": "Ajouter une transaction",
+            "income": "Revenus",
+            "expense": "Dépenses",
+            "date": "Date",
+            "amount": "Montant",
+            "description": "Description",
+            "category": "Catégorie",
+            "selectCategory": "Sélectionner une catégorie",
+            "submit": "Ajouter une transaction",
+            "error": "Veuillez remplir tous les champs",
+            "success": "Transaction ajoutée avec succès"
+        },
+        "chart": {
+            "title": "Répartition des dépenses",
+            "noData": "Aucune dépense à afficher"
+        },
+        "download": {
+            "button": "Télécharger le rapport",
+            "title": "Télécharger le rapport de dépenses",
+            "description": "Sélectionnez une plage de dates pour filtrer le rapport. Laissez vide pour télécharger toutes les transactions.",
+            "startDate": "Date de début",
+            "endDate": "Date de fin",
+            "submit": "Télécharger le PDF",
+            "error": "Aucune transaction trouvée pour la plage de dates sélectionnée",
+            "success": "Rapport téléchargé avec succès"
+        }
+    }
+}

@@ -19,6 +19,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { DownloadIcon } from "lucide-react";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 import { cn } from "@/lib/utils";
 
@@ -28,6 +29,7 @@ interface DownloadOptionsProps {
 }
 
 export default function DownloadOptions({ transactions, className }: DownloadOptionsProps) {
+    const t = useTranslations('Dashboard.download');
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [isOpen, setIsOpen] = useState(false);
@@ -51,13 +53,13 @@ export default function DownloadOptions({ transactions, className }: DownloadOpt
         }
 
         if (filtered.length === 0) {
-            toast.error("No transactions found for the selected date range");
+            toast.error(t('error'));
             return;
         }
 
         generatePDF(filtered);
         setIsOpen(false);
-        toast.success("Report downloaded successfully");
+        toast.success(t('success'));
     };
 
     return (
@@ -76,20 +78,20 @@ export default function DownloadOptions({ transactions, className }: DownloadOpt
                     >
                         <DownloadIcon className="h-4 w-4 sm:mr-2" />
                     </motion.div>
-                    <span className="hidden sm:inline">Download Report</span>
+                    <span className="hidden sm:inline">{t('button')}</span>
                 </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
-                    <DialogTitle>Download Expense Report</DialogTitle>
+                    <DialogTitle>{t('title')}</DialogTitle>
                     <DialogDescription>
-                        Select a date range to filter the report. Leave empty to download all transactions.
+                        {t('description')}
                     </DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4 py-4">
                     <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                            <Label htmlFor="start-date">Start Date</Label>
+                            <Label htmlFor="start-date">{t('startDate')}</Label>
                             <Input
                                 id="start-date"
                                 type="date"
@@ -98,7 +100,7 @@ export default function DownloadOptions({ transactions, className }: DownloadOpt
                             />
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="end-date">End Date</Label>
+                            <Label htmlFor="end-date">{t('endDate')}</Label>
                             <Input
                                 id="end-date"
                                 type="date"
@@ -109,7 +111,7 @@ export default function DownloadOptions({ transactions, className }: DownloadOpt
                     </div>
                 </div>
                 <DialogFooter>
-                    <Button onClick={handleDownload}>Download PDF</Button>
+                    <Button onClick={handleDownload}>{t('submit')}</Button>
                 </DialogFooter>
             </DialogContent>
         </Dialog >

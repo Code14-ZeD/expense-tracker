@@ -4,8 +4,10 @@ import { useTransactions } from "@/lib/context";
 import { ArrowDownIcon, ArrowUpIcon, WalletIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useTranslations } from "next-intl";
 
 export default function SummaryCards() {
+    const t = useTranslations('Dashboard.summary');
     const { balance, income, expenses } = useTransactions();
 
     const formatCurrency = (amount: number) => {
@@ -17,21 +19,21 @@ export default function SummaryCards() {
 
     const cards = [
         {
-            title: "Total Balance",
+            title: t('balance'),
             amount: balance,
             icon: WalletIcon,
             color: "text-blue-500",
             bg: "bg-blue-500/10",
         },
         {
-            title: "Income",
+            title: t('income'),
             amount: income,
             icon: ArrowUpIcon,
             color: "text-emerald-500",
             bg: "bg-emerald-500/10",
         },
         {
-            title: "Expenses",
+            title: t('expenses'),
             amount: expenses,
             icon: ArrowDownIcon,
             color: "text-red-500",

@@ -18,8 +18,10 @@ import {
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useTranslations } from "next-intl";
 
 export default function TransactionForm() {
+    const t = useTranslations('Dashboard.addTransaction');
     const { addTransaction } = useTransactions();
     const [amount, setAmount] = useState("");
     const [description, setDescription] = useState("");
@@ -33,7 +35,7 @@ export default function TransactionForm() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (!amount || !description || !category) {
-            toast.error("Please fill in all fields");
+            toast.error(t('error'));
             return;
         }
 
@@ -52,7 +54,7 @@ export default function TransactionForm() {
             const d = new Date();
             return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
         });
-        toast.success("Transaction added successfully");
+        toast.success(t('success'));
     };
 
     return (
@@ -63,7 +65,7 @@ export default function TransactionForm() {
         >
             <Card>
                 <CardHeader>
-                    <CardTitle>Add Transaction</CardTitle>
+                    <CardTitle>{t('title')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                     <Tabs
@@ -77,20 +79,20 @@ export default function TransactionForm() {
                                 value="income"
                                 className="data-[state=active]:bg-emerald-500 data-[state=active]:text-white dark:data-[state=active]:bg-emerald-500 dark:data-[state=active]:text-white"
                             >
-                                Income
+                                {t('income')}
                             </TabsTrigger>
                             <TabsTrigger
                                 value="expense"
                                 className="data-[state=active]:bg-red-500 data-[state=active]:text-white dark:data-[state=active]:bg-red-500 dark:data-[state=active]:text-white"
                             >
-                                Expense
+                                {t('expense')}
                             </TabsTrigger>
                         </TabsList>
 
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="space-y-2">
-                                    <Label htmlFor="date">Date</Label>
+                                    <Label htmlFor="date">{t('date')}</Label>
                                     <Input
                                         id="date"
                                         type="date"
@@ -99,7 +101,7 @@ export default function TransactionForm() {
                                     />
                                 </div>
                                 <div className="space-y-2">
-                                    <Label htmlFor="amount">Amount</Label>
+                                    <Label htmlFor="amount">{t('amount')}</Label>
                                     <Input
                                         id="amount"
                                         type="number"
@@ -111,7 +113,7 @@ export default function TransactionForm() {
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="description">Description</Label>
+                                <Label htmlFor="description">{t('description')}</Label>
                                 <Input
                                     id="description"
                                     type="text"
@@ -122,10 +124,10 @@ export default function TransactionForm() {
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="category">Category</Label>
+                                <Label htmlFor="category">{t('category')}</Label>
                                 <Select value={category} onValueChange={setCategory}>
                                     <SelectTrigger>
-                                        <SelectValue placeholder="Select Category" />
+                                        <SelectValue placeholder={t('selectCategory')} />
                                     </SelectTrigger>
                                     <SelectContent>
                                         {CATEGORIES[type].map((cat) => (
@@ -156,7 +158,7 @@ export default function TransactionForm() {
                                 >
                                     <PlusIcon className="mr-2 h-4 w-4" />
                                 </motion.div>
-                                Add Transaction
+                                {t('submit')}
                             </Button>
                         </form>
                     </Tabs>

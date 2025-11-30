@@ -27,23 +27,31 @@ export const viewport: Viewport = {
   themeColor: "#000000",
 };
 
-export default function RootLayout({
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Providers>
-          <SplashScreen>
-            {children}
-          </SplashScreen>
-          <Toaster position="top-center" />
-          <InstallPrompt />
-        </Providers>
+        <NextIntlClientProvider messages={messages}>
+          <Providers>
+            <SplashScreen>
+              {children}
+            </SplashScreen>
+            <Toaster position="top-center" />
+            <InstallPrompt />
+          </Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
