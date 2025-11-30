@@ -21,10 +21,10 @@ export default function Home() {
   }
 
   return (
-    <div className="flex h-screen flex-col bg-zinc-50 dark:bg-black">
+    <div className="flex min-h-screen flex-col bg-zinc-50 dark:bg-black">
       <Header />
-      <main className="flex-1 overflow-hidden px-4 py-6">
-        <div className="mx-auto h-full max-w-7xl">
+      <main className="flex-1 px-4 py-6">
+        <div className="mx-auto max-w-7xl">
           <Dashboard />
         </div>
       </main>
