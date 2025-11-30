@@ -15,5 +15,8 @@
     </g>
     <path d="M4 12C4 9.79086 5.79086 8 8 8H24C26.2091 8 28 9.79086 28 12V24C28 26.2091 26.2091 28 24 28H8C5.79086 28 4 26.2091 4 24V12Z" class="wallet" />
     <rect x="4" y="13" width="24" height="2" class="strip" />
-    <circle cx="22" cy="14" r="2.5" fill="#facc15" />
+    <g>
+        <circle cx="22" cy="14" r="3" fill="#facc15" />
+        <text x="22" y="14" dy="1.5" text-anchor="middle" font-size="4.5" font-weight="bold" fill="#713f12" style="user-select: none; font-family: sans-serif;">₹</text>
+    </g>
 </svg>

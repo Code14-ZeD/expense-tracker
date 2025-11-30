@@ -89,11 +89,7 @@ export function Logo({ className = "", size = 32 }: LogoProps) {
                 />
 
                 {/* Coin (Animated) */}
-                <motion.circle
-                    cx="22"
-                    cy="4"
-                    r="2.5"
-                    className="fill-yellow-400"
+                <motion.g
                     variants={{
                         initial: { opacity: 0, y: -10, scale: 0 },
                         visible: {
@@ -114,7 +110,26 @@ export function Logo({ className = "", size = 32 }: LogoProps) {
                         },
                         tap: { opacity: 0, y: 0 },
                     }}
-                />
+                >
+                    <circle
+                        cx="22"
+                        cy="4"
+                        r="3"
+                        className="fill-yellow-400"
+                    />
+                    <text
+                        x="22"
+                        y="4"
+                        dy="1.5"
+                        textAnchor="middle"
+                        fontSize="4.5"
+                        fontWeight="bold"
+                        className="fill-yellow-900"
+                        style={{ userSelect: "none" }}
+                    >
+                        ₹
+                    </text>
+                </motion.g>
             </svg>
         </motion.div>
     );
