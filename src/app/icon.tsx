@@ -49,10 +49,19 @@ export default function Icon() {
                         fill="#855D3E"
                     />
 
+                    {/* Strip */}
+                    <rect
+                        x="4"
+                        y="13"
+                        width="24"
+                        height="2"
+                        fill="black"
+                    />
+
                     {/* Coin */}
                     <circle
                         cx="22"
-                        cy="16"
+                        cy="14"
                         r="2.5"
                         fill="#facc15"
                     />

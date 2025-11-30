@@ -72,7 +72,7 @@ export function Logo({ className = "", size = 32 }: LogoProps) {
                 {/* Strip (Animated) */}
                 <motion.rect
                     x="4"
-                    y="18"
+                    y="13"
                     width="24"
                     height="2"
                     className="fill-black dark:fill-white"
@@ -98,7 +98,7 @@ export function Logo({ className = "", size = 32 }: LogoProps) {
                         initial: { opacity: 0, y: -10, scale: 0 },
                         visible: {
                             opacity: 1,
-                            y: 12,
+                            y: 10,
                             scale: 1,
                             transition: {
                                 delay: 0.6,
@@ -109,7 +109,7 @@ export function Logo({ className = "", size = 32 }: LogoProps) {
                         },
                         hover: {
                             opacity: 1,
-                            y: 12,
+                            y: 10,
                             scale: 1,
                         },
                         tap: { opacity: 0, y: 0 },

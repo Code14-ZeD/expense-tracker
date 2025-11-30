@@ -71,6 +71,15 @@ export default function SplashScreen({
                                 ))}
                             </div>
                         </div>
+
+                        <motion.p
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 1.8, duration: 0.5 }}
+                            className="absolute bottom-12 text-sm font-medium text-muted-foreground"
+                        >
+                            made with ❤️ by Vaibhav Jha
+                        </motion.p>
                     </motion.div>
                 )}
             </AnimatePresence>
