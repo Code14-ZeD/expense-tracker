@@ -40,9 +40,9 @@ export default function RootLayout({
         <Providers>
           <SplashScreen>
             {children}
-            <Toaster position="top-center" />
-            <InstallPrompt />
           </SplashScreen>
+          <Toaster position="top-center" />
+          <InstallPrompt />
         </Providers>
       </body>
     </html>

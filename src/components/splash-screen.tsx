@@ -11,6 +11,7 @@ export default function SplashScreen({
     children: React.ReactNode;
 }) {
     const [show, setShow] = useState(true);
+    const [splashComplete, setSplashComplete] = useState(false);
 
     const router = useRouter();
 
@@ -33,7 +34,7 @@ export default function SplashScreen({
 
     return (
         <>
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" onExitComplete={() => setSplashComplete(true)}>
                 {show && (
                     <motion.div
                         className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background"
@@ -73,7 +74,7 @@ export default function SplashScreen({
                     </motion.div>
                 )}
             </AnimatePresence>
-            {children}
+            {splashComplete && children}
         </>
     );
 }

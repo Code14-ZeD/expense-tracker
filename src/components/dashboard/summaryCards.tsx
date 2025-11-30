@@ -45,7 +45,8 @@ export default function SummaryCards() {
                 <motion.div
                     key={card.title}
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                 >
                     <Card>
@@ -53,9 +54,20 @@ export default function SummaryCards() {
                             <CardTitle className="text-sm font-medium">
                                 {card.title}
                             </CardTitle>
-                            <div className={`rounded-full p-2 ${card.bg}`}>
+                            <motion.div
+                                initial={{ scale: 0 }}
+                                whileInView={{ scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{
+                                    type: "spring",
+                                    stiffness: 260,
+                                    damping: 20,
+                                    delay: 0.1 + index * 0.1,
+                                }}
+                                className={`rounded-full p-2 ${card.bg}`}
+                            >
                                 <card.icon className={`h-4 w-4 ${card.color}`} />
-                            </div>
+                            </motion.div>
                         </CardHeader>
                         <CardContent>
                             <div className="text-2xl font-bold">

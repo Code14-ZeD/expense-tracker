@@ -58,7 +58,8 @@ export default function TransactionForm() {
     return (
         <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
         >
             <Card>
                 <CardHeader>
@@ -143,7 +144,18 @@ export default function TransactionForm() {
                                     : "bg-red-500 hover:bg-red-600 text-white dark:bg-red-500 dark:hover:bg-red-600 dark:text-white"
                                     }`}
                             >
-                                <PlusIcon className="mr-2 h-4 w-4" />
+                                <motion.div
+                                    initial={{ scale: 0 }}
+                                    whileInView={{ scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 260,
+                                        damping: 20,
+                                    }}
+                                >
+                                    <PlusIcon className="mr-2 h-4 w-4" />
+                                </motion.div>
                                 Add Transaction
                             </Button>
                         </form>

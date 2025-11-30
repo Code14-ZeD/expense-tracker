@@ -1,5 +1,7 @@
 "use client";
 
+import { motion } from "framer-motion";
+
 import { useState } from "react";
 import { Transaction } from "@/lib/types";
 import { generatePDF } from "@/lib/pdfGenerator";
@@ -62,7 +64,18 @@ export default function DownloadOptions({ transactions, className }: DownloadOpt
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
                 <Button className={cn("w-auto", className)}>
-                    <DownloadIcon className="mr-2 h-4 w-4" />
+                    <motion.div
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{
+                            type: "spring",
+                            stiffness: 260,
+                            damping: 20,
+                        }}
+                    >
+                        <DownloadIcon className="mr-2 h-4 w-4" />
+                    </motion.div>
                     Download Report
                 </Button>
             </DialogTrigger>

@@ -30,12 +30,21 @@ export default function TransactionList() {
                             <motion.div
                                 key={transaction.id}
                                 initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: "auto" }}
+                                whileInView={{ opacity: 1, height: "auto" }}
+                                viewport={{ once: true }}
                                 exit={{ opacity: 0, height: 0 }}
                                 className="mb-3 flex items-center justify-between rounded-lg border p-3 last:mb-0"
                             >
                                 <div className="flex items-center gap-3">
-                                    <div
+                                    <motion.div
+                                        initial={{ scale: 0 }}
+                                        whileInView={{ scale: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{
+                                            type: "spring",
+                                            stiffness: 260,
+                                            damping: 20,
+                                        }}
                                         className={`flex h-10 w-10 items-center justify-center rounded-full ${transaction.type === "income"
                                             ? "bg-emerald-100 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-500"
                                             : "bg-red-100 text-red-600 dark:bg-red-500/10 dark:text-red-500"
@@ -46,7 +55,7 @@ export default function TransactionList() {
                                         ) : (
                                             <TrendingDownIcon className="h-5 w-5" />
                                         )}
-                                    </div>
+                                    </motion.div>
                                     <div>
                                         <p className="font-medium">
                                             {transaction.description}
