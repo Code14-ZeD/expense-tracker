@@ -25,33 +25,67 @@ export function Logo({ className = "", size = 32 }: LogoProps) {
                 xmlns="http://www.w3.org/2000/svg"
                 className="overflow-visible"
             >
-                {/* Card (Back layer) */}
-                <motion.rect
-                    x="6"
-                    y="8"
-                    width="20"
-                    height="14"
-                    rx="2"
-                    className="fill-primary/40"
+                {/* Card Group (Back layer) */}
+                <motion.g
                     variants={{
-                        initial: { y: 0 },
+                        initial: { y: 0, rotate: 0 },
                         visible: {
-                            y: -5,
+                            y: -6,
+                            rotate: -12,
                             transition: {
                                 duration: 0.8,
                                 ease: "easeOut",
                                 delay: 0.2,
                             },
                         },
-                        hover: { y: -5 },
-                        tap: { y: -2 },
+                        hover: { y: -8, rotate: -15 },
+                        tap: { y: -4, rotate: -5 },
                     }}
-                />
+                    style={{ originX: "16px", originY: "15px" }}
+                >
+                    {/* Card Body */}
+                    <rect
+                        x="6"
+                        y="8"
+                        width="20"
+                        height="14"
+                        rx="2"
+                        className="fill-primary/40"
+                    />
+                    {/* Chip */}
+                    <rect
+                        x="8"
+                        y="10"
+                        width="4"
+                        height="3"
+                        rx="0.5"
+                        className="fill-yellow-500/80"
+                    />
+                </motion.g>
 
                 {/* Wallet Body (Front layer) */}
                 <path
                     d="M4 12C4 9.79086 5.79086 8 8 8H24C26.2091 8 28 9.79086 28 12V24C28 26.2091 26.2091 28 24 28H8C5.79086 28 4 26.2091 4 24V12Z"
                     className="fill-[#855D3E] dark:fill-[#A07050]"
+                />
+
+                {/* Strip (Animated) */}
+                <motion.rect
+                    x="4"
+                    y="18"
+                    width="24"
+                    height="2"
+                    className="fill-black dark:fill-white"
+                    variants={{
+                        initial: { scaleX: 0, opacity: 0 },
+                        visible: {
+                            scaleX: 1,
+                            opacity: 1,
+                            transition: { delay: 0.7, duration: 0.4 },
+                        },
+                        hover: { scaleX: 1.1 },
+                        tap: { scaleX: 0.95 },
+                    }}
                 />
 
                 {/* Coin (Animated) */}
