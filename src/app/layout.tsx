@@ -5,6 +5,8 @@ import { Toaster } from "@/components/ui/sonner";
 import { Providers } from "@/components/providers";
 import SplashScreen from "@/components/splash-screen";
 
+import { InstallPrompt } from "@/components/pwa/InstallPrompt";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -39,6 +41,7 @@ export default function RootLayout({
           <SplashScreen>
             {children}
             <Toaster position="top-center" />
+            <InstallPrompt />
           </SplashScreen>
         </Providers>
       </body>
