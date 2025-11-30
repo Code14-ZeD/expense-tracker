@@ -74,5 +74,7 @@ export const generatePDF = (transactions: Transaction[], startDate?: string, end
     });
 
     // Save the PDF
-    doc.save("expense-report.pdf");
+    const startStr = startDate ? format(new Date(startDate), "yyyy-MM-dd") : "start";
+    const endStr = endDate ? format(new Date(endDate), "yyyy-MM-dd") : "end";
+    doc.save(`expense_report_${startStr}_${endStr}.pdf`);
 };
