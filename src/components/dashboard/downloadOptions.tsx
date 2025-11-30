@@ -74,9 +74,9 @@ export default function DownloadOptions({ transactions, className }: DownloadOpt
                             damping: 20,
                         }}
                     >
-                        <DownloadIcon className="mr-2 h-4 w-4" />
+                        <DownloadIcon className="h-4 w-4 sm:mr-2" />
                     </motion.div>
-                    Download Report
+                    <span className="hidden sm:inline">Download Report</span>
                 </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
@@ -112,6 +112,6 @@ export default function DownloadOptions({ transactions, className }: DownloadOpt
                     <Button onClick={handleDownload}>Download PDF</Button>
                 </DialogFooter>
             </DialogContent>
-        </Dialog>
+        </Dialog >
     );
 }

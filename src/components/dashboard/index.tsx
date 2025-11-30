@@ -22,9 +22,9 @@ export default function Dashboard() {
   return (
     <div className="flex flex-col space-y-6">
       <div className="flex-shrink-0 space-y-1">
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-start justify-between gap-4 sm:items-center">
           <h2 className="text-3xl font-bold tracking-tight">
-            {getGreeting()}, {profile.name || "User"}
+            {getGreeting()}, <span className="block sm:inline">{profile.name || "User"}</span>
           </h2>
           <DownloadOptions transactions={transactions} />
         </div>
