@@ -18,6 +18,7 @@ export default function SettingsPage() {
     const { profile, updateProfile, loading } = useProfile();
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [isEditing, setIsEditing] = useState(false);
+    const [isUploading, setIsUploading] = useState(false);
     const [formData, setFormData] = useState(profile);
     const router = useRouter();
 
@@ -74,6 +75,7 @@ export default function SettingsPage() {
         const file = e.target.files?.[0];
         if (!file) return;
 
+        setIsUploading(true);
         const reader = new FileReader();
         reader.onload = (event) => {
             try {
@@ -91,7 +93,12 @@ export default function SettingsPage() {
             } catch (error) {
                 console.error(error);
                 toast.error("Failed to parse file");
+                setIsUploading(false);
             }
+        };
+        reader.onerror = () => {
+            toast.error("Failed to read file");
+            setIsUploading(false);
         };
         reader.readAsText(file);
     };
@@ -203,7 +210,7 @@ export default function SettingsPage() {
                                             {t('cancel')}
                                         </Button>
                                     )}
-                                    <Button onClick={handleSave}>{t('save')}</Button>
+                                    <Button onClick={handleSave} disabled={isUploading}>{t('save')}</Button>
                                 </>
                             ) : (
                                 <Button variant="outline" onClick={() => setIsEditing(true)}>
@@ -221,7 +228,7 @@ export default function SettingsPage() {
                     </CardHeader>
                     <CardContent className="space-y-4">
                         <div className="flex flex-col gap-4 sm:flex-row">
-                            <Button onClick={handleDownload} className="flex-1 gap-2">
+                            <Button onClick={handleDownload} className="flex-1 gap-2" disabled={!profile.name}>
                                 <Download className="h-4 w-4" />
                                 {t('download')}
                             </Button>

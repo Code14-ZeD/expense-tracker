@@ -141,10 +141,7 @@ export default function TransactionForm() {
 
                             <Button
                                 type="submit"
-                                className={`w-full ${type === "income"
-                                    ? "bg-emerald-500 hover:bg-emerald-600 text-white dark:bg-emerald-500 dark:hover:bg-emerald-600 dark:text-white"
-                                    : "bg-red-500 hover:bg-red-600 text-white dark:bg-red-500 dark:hover:bg-red-600 dark:text-white"
-                                    }`}
+                                className="w-full"
                             >
                                 <motion.div
                                     initial={{ scale: 0 }}
