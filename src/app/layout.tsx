@@ -6,6 +6,7 @@ import { Providers } from "@/components/providers";
 import SplashScreen from "@/components/splash-screen";
 
 import { InstallPrompt } from "@/components/pwa/InstallPrompt";
+import { UpdatePrompt } from "@/components/pwa/UpdatePrompt";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,6 +51,7 @@ export default async function RootLayout({
             </SplashScreen>
             <Toaster position="top-center" />
             <InstallPrompt />
+            <UpdatePrompt />
           </Providers>
         </NextIntlClientProvider>
       </body>
