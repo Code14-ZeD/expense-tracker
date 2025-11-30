@@ -72,8 +72,18 @@ export default function TransactionForm() {
                         className="w-full"
                     >
                         <TabsList className="grid w-full grid-cols-2 mb-4">
-                            <TabsTrigger value="income">Income</TabsTrigger>
-                            <TabsTrigger value="expense">Expense</TabsTrigger>
+                            <TabsTrigger
+                                value="income"
+                                className="data-[state=active]:bg-emerald-500 data-[state=active]:text-white dark:data-[state=active]:bg-emerald-500 dark:data-[state=active]:text-white"
+                            >
+                                Income
+                            </TabsTrigger>
+                            <TabsTrigger
+                                value="expense"
+                                className="data-[state=active]:bg-red-500 data-[state=active]:text-white dark:data-[state=active]:bg-red-500 dark:data-[state=active]:text-white"
+                            >
+                                Expense
+                            </TabsTrigger>
                         </TabsList>
 
                         <form onSubmit={handleSubmit} className="space-y-4">
@@ -126,7 +136,13 @@ export default function TransactionForm() {
                                 </Select>
                             </div>
 
-                            <Button type="submit" className="w-full">
+                            <Button
+                                type="submit"
+                                className={`w-full ${type === "income"
+                                    ? "bg-emerald-500 hover:bg-emerald-600 text-white dark:bg-emerald-500 dark:hover:bg-emerald-600 dark:text-white"
+                                    : "bg-red-500 hover:bg-red-600 text-white dark:bg-red-500 dark:hover:bg-red-600 dark:text-white"
+                                    }`}
+                            >
                                 <PlusIcon className="mr-2 h-4 w-4" />
                                 Add Transaction
                             </Button>
