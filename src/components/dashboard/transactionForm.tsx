@@ -77,13 +77,13 @@ export default function TransactionForm() {
                         <TabsList className="grid w-full grid-cols-2 mb-4">
                             <TabsTrigger
                                 value="income"
-                                className="data-[state=active]:bg-emerald-500 data-[state=active]:text-white dark:data-[state=active]:bg-emerald-500 dark:data-[state=active]:text-white"
+                                className="data-[state=active]:bg-[#009966] data-[state=active]:text-white dark:data-[state=active]:bg-[#009966] dark:data-[state=active]:text-white"
                             >
                                 {t('income')}
                             </TabsTrigger>
                             <TabsTrigger
                                 value="expense"
-                                className="data-[state=active]:bg-red-500 data-[state=active]:text-white dark:data-[state=active]:bg-red-500 dark:data-[state=active]:text-white"
+                                className="data-[state=active]:bg-[#e8000c] data-[state=active]:text-white dark:data-[state=active]:bg-[#e8000c] dark:data-[state=active]:text-white"
                             >
                                 {t('expense')}
                             </TabsTrigger>

@@ -67,7 +67,7 @@ export default function TransactionList() {
                                             stiffness: 260,
                                             damping: 20,
                                         }}
-                                        className={`flex h-10 w-10 items-center justify-center rounded-full ${transaction.type === "income"
+                                        className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${transaction.type === "income"
                                             ? "bg-emerald-100 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-500"
                                             : "bg-red-100 text-red-600 dark:bg-red-500/10 dark:text-red-500"
                                             }`}
@@ -91,8 +91,8 @@ export default function TransactionList() {
                                 <div className="flex items-center gap-2">
                                     <span
                                         className={`font-semibold ${transaction.type === "income"
-                                            ? "text-emerald-600 dark:text-emerald-500"
-                                            : "text-red-600 dark:text-red-500"
+                                            ? "text-[#009966] dark:text-[#009966]"
+                                            : "text-[#e8000c] dark:text-[#e8000c]"
                                             }`}
                                     >
                                         {transaction.type === "income" ? "+" : "-"}{formatCurrency(transaction.amount)}
